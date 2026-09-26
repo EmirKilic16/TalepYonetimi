@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="TalepYonetimi.Application/TalepYonetimi.Application.csproj" />
+  <Project Path="TalepYonetimi.Domain/TalepYonetimi.Domain.csproj" />
+  <Project Path="TalepYonetimi.Infrastructure/TalepYonetimi.Infrastructure.csproj" />
+  <Project Path="TalepYonetimi/TalepYonetimi.Web.csproj" />
+</Solution>
