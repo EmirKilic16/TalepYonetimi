@@ -1,0 +1,45 @@
+﻿@model TalepYonetimi.Application.DTOs.Kullanicilar.GirisDto
+
+@{
+    ViewData["Title"] = "Giriş Yap";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h3 class="mb-4">Giriş Yap</h3>
+
+                <form asp-controller="Kullanicilar"
+                      asp-action="Login"
+                      method="post">
+
+                    <div asp-validation-summary="All"
+                         class="text-danger"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Eposta" class="form-label">
+                            E-posta
+                        </label>
+                        <input asp-for="Eposta"
+                               type="email"
+                               class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Sifre" class="form-label">
+                            Şifre
+                        </label>
+                        <input asp-for="Sifre"
+                               type="password"
+                               class="form-control" />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">
+                        Giriş Yap
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

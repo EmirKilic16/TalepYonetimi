@@ -1,0 +1,70 @@
+﻿@model IReadOnlyList<TalepYonetimi.Application.DTOs.Talepler.TalepListeDto>
+
+@{
+    ViewData["Title"] = "Talepler";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-1">Talepler</h1>
+        <p class="text-muted mb-0">Sistemdeki talepleri yönetin.</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary">Yeni Talep</a>
+</div>
+
+@if (Model.Count == 0)
+{
+    <div class="card border-0 shadow-sm">
+        <div class="card-body py-5 text-center">
+            <h2 class="h5">Henüz talep bulunmuyor</h2>
+            <p class="text-muted">Yeni talep oluşturarak başlayabilirsiniz.</p>
+            <a asp-action="Create" class="btn btn-primary">Talep oluştur</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card border-0 shadow-sm">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0" id="myTable">
+                <thead class="table-light">
+                    <tr>
+                        <th>Başlık</th>
+                        <th>Açıklama</th>
+                        <th>Oluşturma Tarihi</th>
+                        <th>Oluşturan Kullanıcı</th>
+                        <th class="text-end">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var talep in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold">@talep.Baslik</td>
+                            <td>@talep.Aciklama</td>
+                            <td>@talep.OlusturmaTarihi.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+                            <td>@talep.OlusturanKullanici</td>
+                            <td class="text-end text-nowrap">
+                                <a asp-action="Edit"
+                                   asp-route-id="@talep.Id"
+                                   class="btn btn-sm btn-outline-primary">Düzenle</a>
+                                <form asp-action="Delete"
+                                      asp-route-id="@talep.Id"
+                                      method="post"
+                                      class="d-inline"
+                                >
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Sil</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+@section Scripts{
+    <script>
+        let table = new DataTable('#myTable');
+    </script>
+}

@@ -1,4 +1,4 @@
-﻿namespace TalepYonetimi.Application.Interfaces;
+﻿namespace TalepYonetimi.Application.Security;
 
 public interface ISifreHasher
 {

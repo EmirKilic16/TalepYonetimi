@@ -5,6 +5,7 @@ public sealed record KullaniciListeDto(
     string Ad,
     string Soyad,
     string Eposta,
+    bool AdminMi,
     DateTime OlusturmaTarihi)
 {
     public string AdSoyad => $"{Ad} {Soyad}";

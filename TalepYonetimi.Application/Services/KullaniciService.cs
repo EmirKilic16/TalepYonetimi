@@ -2,6 +2,7 @@
 using TalepYonetimi.Application.DTOs;
 using TalepYonetimi.Application.DTOs.Kullanicilar;
 using TalepYonetimi.Application.Interfaces;
+using TalepYonetimi.Application.Security;
 using TalepYonetimi.Domain.Entities;
 using TalepYonetimi.Domain.Interfaces;
 
@@ -24,6 +25,7 @@ public sealed class KullaniciService(
                 kullanici.Ad,
                 kullanici.Soyad,
                 kullanici.Eposta,
+                kullanici.AdminMi,
                 kullanici.OlusturmaTarihi))
             .ToList();
     }
@@ -123,6 +125,27 @@ public sealed class KullaniciService(
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
         return IslemSonucu.Basari();
+    }
+    public async Task<KullaniciListeDto?> GirisAsync(
+     GirisDto dto,
+     CancellationToken cancellationToken = default)
+    {
+        var kullanici = await unitOfWork.Kullanicilar.MaileGoreGetirAsync(
+            NormalizeEmail(dto.Eposta), cancellationToken);
+
+        if (kullanici is null ||
+            !sifreHasher.Verify(dto.Sifre, kullanici.SifreHash))
+        {
+            return null;
+        }
+
+        return new KullaniciListeDto(
+            kullanici.Id,
+            kullanici.Ad,
+            kullanici.Soyad,
+            kullanici.Eposta,
+            kullanici.AdminMi,
+            kullanici.OlusturmaTarihi);
     }
 
     private static string NormalizeEmail(string eposta) =>

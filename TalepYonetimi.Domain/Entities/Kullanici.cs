@@ -18,6 +18,7 @@ namespace TalepYonetimi.Domain.Entities
 
         public string SifreHash { get; set; }
 
+        public bool AdminMi { get; set; } = false;
         public ICollection<Talep> Talepler { get; set; } = new List<Talep>();
 
 

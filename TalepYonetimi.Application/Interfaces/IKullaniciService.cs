@@ -1,4 +1,4 @@
-﻿using TalepYonetimi.Application.Common
+﻿using TalepYonetimi.Application.Common;
 using TalepYonetimi.Application.DTOs.Kullanicilar;
 
 namespace TalepYonetimi.Application.Interfaces;
@@ -23,4 +23,8 @@ public interface IKullaniciService
     Task<IslemSonucu> SilAsync(
         int id,
         CancellationToken cancellationToken = default);
+
+    Task<KullaniciListeDto?> GirisAsync(
+      GirisDto dto,
+      CancellationToken cancellationToken = default);
 }

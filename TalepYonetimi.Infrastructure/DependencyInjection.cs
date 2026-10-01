@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using TalepYonetimi.Application.Interfaces;
 using TalepYonetimi.Domain.Interfaces;
 using TalepYonetimi.Infrastructure.Data;
 using TalepYonetimi.Infrastructure.Repositories;
+
 
 namespace TalepYonetimi.Infrastructure;
 
@@ -20,7 +22,7 @@ public static class DependencyInjection
         services.AddScoped<IKullaniciRepository, KullaniciRepository>();
         services.AddScoped<ITalepRepository, TalepRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+        
         return services;
     }
 }

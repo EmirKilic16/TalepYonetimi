@@ -9,7 +9,7 @@ namespace TalepYonetimi.Domain.Interfaces
 {
     public interface ITalepRepository : IRepository<Talep>
     {
-        Task<IReadOnlyList<Talep>> TümünüListeleAsync(CancellationToken cancellationToken = default);
+        Task<IReadOnlyList<Talep>> TumunuListeleAsync(CancellationToken cancellationToken = default);
 
         Task<IReadOnlyList<Talep>> KullaniciyaGoreListeleAsync(int kullaniciId,CancellationToken cancellationToken = default);
     }

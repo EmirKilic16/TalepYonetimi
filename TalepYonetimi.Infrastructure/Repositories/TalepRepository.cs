@@ -13,12 +13,13 @@ public sealed class TalepRepository(ApplicationDbContext dbContext)
     =>
         await DbSet
             .AsNoTracking()
+            .Include(talep=>talep.Kullanici)
             .Where(talep => talep.KullaniciId == kullaniciId)
             .OrderByDescending(talep => talep.OlusturmaTarihi)
             .ToListAsync(cancellationToken);
 
 
-    public async Task<IReadOnlyList<Talep>> TümünüListeleAsync(CancellationToken cancellationToken = default)
+    public async Task<IReadOnlyList<Talep>> TumunuListeleAsync(CancellationToken cancellationToken = default)
     =>
         await DbSet
             .AsNoTracking()

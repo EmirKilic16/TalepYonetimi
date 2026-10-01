@@ -25,4 +25,8 @@
     <ProjectReference Include="..\TalepYonetimi.Domain\TalepYonetimi.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Security\" />
+  </ItemGroup>
+
 </Project>

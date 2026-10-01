@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System.ComponentModel.DataAnnotations;
 
-namespace TalepYonetimi.Application.DTOs
+
+namespace TalepYonetimi.Application.DTOs.Kullanicilar;
+
+public sealed class GirisDto
 {
-    public class GirisDto
-    {
-    }
+    [Required(ErrorMessage = "E-posta gerekli.")]
+    [EmailAddress(ErrorMessage = "Geçerli bir e-posta gir.")]
+    public string Eposta { get; set; } = "";
+
+    [Required(ErrorMessage = "Şifre gerekli.")]
+    [DataType(DataType.Password)]
+    public string Sifre { get; set; } = "";
 }
+

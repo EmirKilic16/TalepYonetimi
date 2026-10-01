@@ -1,7 +1,8 @@
 ﻿using System.Security.Cryptography;
-using TalepYonetimi.Application.Interfaces
+using TalepYonetimi.Application.Interfaces;
+using TalepYonetimi.Application.Security;
 
-namespace TalepYonetimi.Infrastructure.Security;
+namespace TalepYonetimi.Application.Services;
 
 public sealed class Pbkdf2SifreHasher : ISifreHasher
 {
